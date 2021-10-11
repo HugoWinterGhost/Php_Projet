@@ -25,6 +25,9 @@ switch ($_SERVER['REQUEST_URI']):
     case ("/user") :
       $active = "user";
       break;
+    case ("/gestion") :
+      $active = "gestion";
+      break;
     case ("/blog") :
       $active = "blog";
       break;
@@ -44,6 +47,7 @@ endswitch;
   <a <?php if($active === "blog"): ?> class="active" <?php endif ?> href="/blog">Blog</a>
   <?php if ($menuUser) { ?>
     <a <?php if($active === "user"): ?> class="active" <?php endif ?> href="/user">Mon compte</a>
+    <a <?php if($active === "gestion"): ?> class="active" <?php endif ?> href="/gestion">Administration</a>
   <?php } else { ?>
     <a <?php if($active === "register"): ?> class="active" <?php endif ?> href="/register">S'enregistrer</a>
     <a <?php if($active === "login"): ?> class="active" <?php endif ?> href="/login">Se connecter</a>
