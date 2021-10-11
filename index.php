@@ -51,6 +51,17 @@ switch ($_SERVER['REQUEST_URI']):
     case ("/gestion") :
         include "App/Views/GestionAnimal.php";
         break;
+    case ("/add") :
+      include "App/Views/AddAnimal.php";
+      break;
+    case (preg_match('/\/edit\/(\d+)/', $_SERVER['REQUEST_URI'], $matches) ? true : false) :
+      $bddAnimal = Animaux::getAnimal($matches[1]);
+      include "App/Views/EditAnimal.php";
+      break;
+    case (preg_match('/\/delete\/(\d+)/', $_SERVER['REQUEST_URI'], $matches) ? true : false) :
+      $bddAnimal = Animaux::getAnimal($matches[1]);
+      include "App/Views/DeleteAnimal.php";
+      break;
     case ("/blog") :
         include "App/Views/Blog.php";
         break;

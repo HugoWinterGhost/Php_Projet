@@ -48,4 +48,32 @@ class Animaux extends Bdd {
       $id
     ]);
   }
+
+  public static function addAnimal($nom, $prenom, $mail, $password) {
+    $sql = "INSERT INTO `users` (nom, prenom, mail, password) VALUES (?, ?, ?, ?)";
+    $stmt = Bdd::getInstance()->conn->prepare($sql);
+    $stmt->execute([
+      $nom,
+      $prenom,
+      $mail,
+      $password
+    ]);
+  }
+
+  public static function editAnimal($booking, $id) {
+    $sql = "UPDATE `animaux` SET `booking` = ? WHERE `id` = ?";
+    $stmt = Bdd::getInstance()->conn->prepare($sql);
+    $stmt->execute([
+      $booking,
+      $id
+    ]);
+  }
+
+  public static function deleteAnimal($id) {
+    $sql = "DELETE FROM `animaux` WHERE `id` = ?";
+    $stmt = Bdd::getInstance()->conn->prepare($sql);
+    $stmt->execute([
+      $id
+    ]);
+  }
 }

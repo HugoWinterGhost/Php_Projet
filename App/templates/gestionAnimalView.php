@@ -61,5 +61,7 @@
   </tbody>
 </table>
 
+<a style="width: inherit; color: white;" class="btn btn-primary">Ajouter un Animal</button>
+
 <?php require('./App/templates/head/footer.php'); ?>
 </div>
