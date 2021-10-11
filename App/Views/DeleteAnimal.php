@@ -16,7 +16,7 @@ Animaux::deleteAnimal($id);
   Swal.fire({
     title: "Succès!",
     icon: "success",
-    text: "L'animal à bien été Supprimé Supprimé",
+    text: "L'animal à bien été Supprimé",
   }).then(function () {
     window.location.href = "../gestion";
   });  
