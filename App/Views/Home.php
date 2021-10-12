@@ -3,6 +3,12 @@ if (isset($bddAnimauxByCategorie)){
   $bddAnimaux = $bddAnimauxByCategorie;
 }
 
+if (isset($_POST['bouton'])) {
+  $bddAnimaux = array_filter($bddAnimaux, function($key) {
+    return $key["booking"] == false;
+  });
+}
+
 foreach ($bddAnimaux as $animal) {
   switch($animal["id_categorie"]){
     case(1):
@@ -25,5 +31,6 @@ foreach ($bddAnimaux as $animal) {
   $createCard = new AnimalContent();
   $createCard->createCard($newAnimal);
 }
+
 
 include "App/templates/indexView.php";

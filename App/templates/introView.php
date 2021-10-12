@@ -19,5 +19,10 @@
 
     <h2>Nos animaux à adopter :</h2>
 
+    <form style="margin-bottom: 50px;" id="myform" method="POST" enctype="multipart/form-data">
+      <input style="width: inherit;" class="btn btn-primary" name="bouton" type="submit" 
+        value="Afficher uniquement les animaux disponibles" onclick="document.forms['myform'].submit();"/>
+    </form>
+
   <?php require('./App/templates/head/footer.php'); ?>
 </div>
