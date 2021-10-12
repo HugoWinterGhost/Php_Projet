@@ -29,18 +29,6 @@ class Animaux extends Bdd {
     return Bdd::getInstance()->conn->query($req)->fetchAll();
   }
 
-  public static function createUser($nom, $prenom, $mail, $password, $role) {
-    $sql = "INSERT INTO `users` (nom, prenom, mail, password, role) VALUES (?, ?, ?, ?, ?)";
-    $stmt = Bdd::getInstance()->conn->prepare($sql);
-    $stmt->execute([
-      $nom,
-      $prenom,
-      $mail,
-      $password,
-      $role
-    ]);
-  }
-
   public static function bookingAnimal($booking, $id) {
     $sql = "UPDATE `animaux` SET `booking` = ? WHERE `id` = ?";
     $stmt = Bdd::getInstance()->conn->prepare($sql);

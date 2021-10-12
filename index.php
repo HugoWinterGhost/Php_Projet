@@ -3,6 +3,7 @@
 require "App/session/session.php";
 require "App/Bdd/Bdd.php";
 require "App/Bdd/Animaux.php";
+require "App/Bdd/User.php";
 
 require "App/Animaux/Chat.php";
 require "App/Animaux/Chien.php";

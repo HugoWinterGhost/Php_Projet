@@ -51,7 +51,51 @@
   </tbody>
 </table>
 
-<a href="add" style="width: inherit; color: white;" class="btn btn-primary">Ajouter un Animal</button>
+<a href="add" style="width: inherit; color: white; margin-bottom: 30px;" class="btn btn-primary">Ajouter un Animal</a>
+
+<h2>Liste des Utilisateurs</h2>
+
+<table class="table" style="margin-bottom: 100px;">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Role</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($users as $user) { ?>
+    <tr>
+      <th scope="row"><?= $user['id'] ?></th>
+      <td><?= $user['nom'] ?></td>
+      <td><?= $user['prenom'] ?></td>
+      <td><?= $user['mail'] ?></td>
+      <td>
+        <?php if ($user['role'] == 0) { 
+          echo "Utilisateur";
+        } else if ($user['role'] == 1) {
+          echo "Administrateur";
+        } 
+        ?>
+      </td>
+      <td>
+        <?php if ($user['role'] == 0) { ?>
+          <form id="myform" method="POST" enctype="multipart/form-data">
+            <input style="width: inherit;" class="btn btn-primary" name="bouton" type="submit" value="Passer en Administrateur l'utilisateur <?= $user['id'] ?>"
+              onclick="document.forms['myform'].submit();"/>
+          </form>
+        <?php } else { ?>
+          Aucune action n'est permise pour cet utilisateur
+        <?php } ?>
+    </tr>
+    <?php } ?>
+  </tbody>
+</table>
+
+
 
 <?php require('./App/templates/head/footer.php'); ?>
 </div>

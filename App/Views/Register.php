@@ -58,7 +58,7 @@ if (isset($_POST['bouton']) && !isset($erreur)) {
     $password = $_POST['password'];
     $hashPassword = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
-    Animaux::createUser($nom, $prenom, $email, $hashPassword, $role);
+    User::createUser($nom, $prenom, $email, $hashPassword, $role);
     $result = Bdd::getInstance()->conn->query('SELECT * FROM `users` WHERE `mail` LIKE "' . $email . '" AND `password` LIKE "' . $hashPassword . '"');
 
     foreach ($result as $row) {
