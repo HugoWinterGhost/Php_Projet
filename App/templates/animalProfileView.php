@@ -1,5 +1,5 @@
 <div class="profile-content">
-  <?php if (isset($_SESSION['user'])) { ?> 
+  <?php if (isset($_SESSION['user']) && $_SESSION['user'] != 'admin') { ?> 
     <?php if ($newAnimal->getBooking() == true) { ?>
       <button class="btn btn-primary" onclick="alreadyBook()">Réverver</button>
     <?php } else { ?>
@@ -34,16 +34,6 @@
       text: "Vous devez vous connecter",
     }).then(function () {
       window.location.href = "../login";
-    });  
-  }
-
-  function bookAnimal(){
-    Swal.fire({
-      title: "Succès!",
-      icon: "success",
-      text: "Réservation Terminée",
-    }).then(function () {
-      window.location.href = "../index";
     });  
   }
 </script>
