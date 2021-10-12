@@ -44,7 +44,11 @@ if (!isset($erreur) && isset($_POST['bouton'])) {
     $result = Bdd::getInstance()->conn->query('SELECT * FROM `users` WHERE `mail` LIKE "' . $_REQUEST['email'] . '" AND `password` LIKE "' . $res . '"');
 
     foreach ($result as $row) {
-      $_SESSION['user'] = $row['id'];
+      if ($row['role'] == 1) {
+        $_SESSION['user'] = 'admin';
+      } else {
+        $_SESSION['user'] = $row['id'];
+      }
     }
     
     if (isset($_SESSION['user'])) { ?>

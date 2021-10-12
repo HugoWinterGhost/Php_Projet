@@ -53,11 +53,12 @@ if (isset($_POST['bouton']) && !isset($erreur)) {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
+    $role = 0;
 
     $password = $_POST['password'];
     $hashPassword = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
-    Animaux::createUser($nom, $prenom, $email, $hashPassword);
+    Animaux::createUser($nom, $prenom, $email, $hashPassword, $role);
     $result = Bdd::getInstance()->conn->query('SELECT * FROM `users` WHERE `mail` LIKE "' . $email . '" AND `password` LIKE "' . $hashPassword . '"');
 
     foreach ($result as $row) {

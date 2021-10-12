@@ -1,10 +1,12 @@
-<form class="profile-content" id="myform" method="POST" enctype="multipart/form-data">
+<div class="profile-content">
   <?php if (isset($_SESSION['user'])) { ?> 
     <?php if ($newAnimal->getBooking() == true) { ?>
       <button class="btn btn-primary" onclick="alreadyBook()">Réverver</button>
     <?php } else { ?>
-      <input style="width: inherit;" class="btn btn-primary" name="bouton" type="submit" value="Réverver"
-        onclick="document.forms['myform'].submit();"/>
+      <form  id="myform" method="POST" enctype="multipart/form-data">
+        <input style="width: inherit;" class="btn btn-primary" name="bouton" type="submit" value="Réverver"
+          onclick="document.forms['myform'].submit();"/>
+      </form>
     <?php } ?>
   <?php } else if (!isset($_SESSION['user'])) { ?>
     <button class="btn btn-primary" onclick="bookError()">Réverver</button>

@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_SESSION['user'])) { ?>
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'admin') { ?>
   <script>
     location.href = "login";
   </script>;

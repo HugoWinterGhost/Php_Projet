@@ -47,6 +47,8 @@ endswitch;
   <a <?php if($active === "blog"): ?> class="active" <?php endif ?> href="/blog">Blog</a>
   <?php if ($menuUser) { ?>
     <a <?php if($active === "user"): ?> class="active" <?php endif ?> href="/user">Mon compte</a>
+  <?php } else if ($menuAdmin) { ?>
+    <a <?php if($active === "user"): ?> class="active" <?php endif ?> href="/user">Mon compte</a>
     <a <?php if($active === "gestion"): ?> class="active" <?php endif ?> href="/gestion">Administration</a>
   <?php } else { ?>
     <a <?php if($active === "register"): ?> class="active" <?php endif ?> href="/register">S'enregistrer</a>
