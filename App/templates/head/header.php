@@ -1,40 +1,19 @@
 <?php 
 
-switch ($_SERVER['REQUEST_URI']):
-    case ("/chats") :
-      $active = "chats";
-      break;
-    case ("/chiens") :
-      $active = "chiens";
-      break;
-    case ("/poissons") :
-      $active = "poissons";
-      break;
-    case ("/reptiles") :
-      $active = "reptiles";
-      break;
-    case ("/") :
-      $active = "home";
-      break;
-    case ("/login") :
-      $active = "login";
-      break;
-    case ("/register") :
-      $active = "register";
-      break;
-    case ("/user") :
-      $active = "user";
-      break;
-    case ("/gestion") :
-      $active = "gestion";
-      break;
-    case ("/blog") :
-      $active = "blog";
-      break;
-    default:
-      $active = "";
-      break;
-endswitch;
+$active = match($_SERVER['REQUEST_URI']) {
+  '/chats' => 'chats',
+  '/chiens' => 'chiens',
+  '/poissons' => 'poissons',
+  '/reptiles' => 'reptiles',
+  '/' => 'home',
+  '/login' => 'login',
+  '/register' => 'register',
+  '/user' => 'user',
+  '/gestion' => 'gestion',
+  '/blog' => 'blog',
+  default => '',
+};
+
 ?>
 <div class="navbar">
   <img class="logo" width=300px; src="/App/templates/img/logo.png" onclick="redirectHome()"> 

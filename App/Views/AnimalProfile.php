@@ -1,22 +1,13 @@
 <?php 
-switch($bddAnimal["id_categorie"]){
-    case(1):
-        $newAnimal = new Chat($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"],
-        $bddAnimal["compatibleChat"], $bddAnimal["compatibleChien"], $bddAnimal["compatibleEnfants"], $bddAnimal["booking"]);
-        break;
-    case(2):
-        $newAnimal = new Chien($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"],
-        $bddAnimal["compatibleChat"], $bddAnimal["compatibleChien"], $bddAnimal["compatibleEnfants"], $bddAnimal["booking"]);
-        break;
-    case(3):
-        $newAnimal = new Poisson($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"], $bddAnimal["booking"]);
-        break;
-    case(4):
-        $newAnimal = new Reptile($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"], $bddAnimal["booking"]);
-        break;
-    default:
-        break;
-}
+
+$newAnimal = match(strval($bddAnimal['id_categorie'])) {
+  '1' => new Chat($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"], $bddAnimal["compatibleChat"], $bddAnimal["compatibleChien"], $bddAnimal["compatibleEnfants"], $bddAnimal["booking"]),
+  '2' => new Chien($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"], $bddAnimal["compatibleChat"], $bddAnimal["compatibleChien"], $bddAnimal["compatibleEnfants"], $bddAnimal["booking"]),
+  '3' => new Poisson($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"], $bddAnimal["booking"]),
+  '4' => new Reptile($bddAnimal["id"], $bddAnimal["nom"], $bddAnimal["couleur"], $bddAnimal["age"], $bddAnimal["race"], $bddAnimal["description"], $bddAnimal["booking"]),
+  default => '',
+};
+
 $createProfile = new AnimalContent();
 $createProfile->createProfile($newAnimal);
 

@@ -18,23 +18,13 @@
   </thead>
   <tbody>
   <?php foreach($animaux as $animal) { 
-    switch ($animal['id_categorie']):
-      case 1 :
-        $categorie = "Chat";
-        break;
-      case 2 :
-        $categorie = "Chien";
-        break;
-      case 3 :
-        $categorie = "Poisson";
-        break;
-      case 4 :
-        $categorie = "Reptile";
-        break;
-      default:
-      $categorie = "";
-      break;
-    endswitch;
+    $categorie = match(strval($animal['id_categorie'])) {
+      '1' => 'Chat',
+      '2' => 'Chien',
+      '3' => 'Poisson',
+      '4' => 'Reptile',
+      default => '',
+    };
     ?>
     <tr>
       <th scope="row"><?= $animal['id'] ?></th>

@@ -10,24 +10,15 @@ if (isset($_POST['bouton'])) {
 }
 
 foreach ($bddAnimaux as $animal) {
-  switch($animal["id_categorie"]){
-    case(1):
-      $newAnimal = new Chat($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"],
-      $animal["compatibleChat"], $animal["compatibleChien"], $animal["compatibleEnfants"], $animal["booking"]);
-      break;
-    case(2):
-      $newAnimal = new Chien($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"],
-      $animal["compatibleChat"], $animal["compatibleChien"], $animal["compatibleEnfants"], $animal["booking"]);
-      break;
-    case(3):
-      $newAnimal = new Poisson($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"], $animal["booking"]);
-      break;
-    case(4):
-      $newAnimal = new Reptile($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"], $animal["booking"]);
-      break;
-    default:
-      break;
-  }
+  
+  $newAnimal = match(strval($animal['id_categorie'])) {
+    '1' => new Chat($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"], $animal["compatibleChat"], $animal["compatibleChien"], $animal["compatibleEnfants"], $animal["booking"]),
+    '2' => new Chien($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"], $animal["compatibleChat"], $animal["compatibleChien"], $animal["compatibleEnfants"], $animal["booking"]),
+    '3' => new Poisson($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"], $animal["booking"]),
+    '4' => new Reptile($animal["id"], $animal["nom"], $animal["couleur"], $animal["age"], $animal["race"], $animal["description"], $animal["booking"]),
+    default => '',
+  };
+
   $createCard = new AnimalContent();
   $createCard->createCard($newAnimal);
 }
