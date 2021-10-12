@@ -106,7 +106,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `nom`, `prenom`, `mail`, `password`, `role`) VALUES
-(1, 'test', 'test', 'test@test.com', '$2y$12$Jwdgr8ejHjsKUFrsQ4XVe.jbx9bxBPwnL7A4H1uUWfG7dwysjcBGu', 0);
+(1, 'test', 'test', 'test@test.com', '$2y$12$Jwdgr8ejHjsKUFrsQ4XVe.jbx9bxBPwnL7A4H1uUWfG7dwysjcBGu', 0),
+(2, 'toto', 'toto', 'toto@toto.com', '$2y$12$kFGfitS0Fs11upyROdLYCutQ42yQCauQfwFA33nnEo0axY7fyIDIm', 0),
+(3, 'admin', 'admin', 'admin@admin.com', '$2y$12$8AgcNab/Gv0fbIeDF/LbOe3WL3P4cGVWLQfxJGZMTnJ/PkJ8NzzYq', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
